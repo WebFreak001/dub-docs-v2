@@ -1,0 +1,12 @@
+{
+	"spellright.language": [
+		"en_US"
+	],
+	"spellright.documentTypes": [
+		"markdown",
+		"latex",
+		"plaintext"
+	],
+	"editor.insertSpaces": true,
+	"editor.detectIndentation": false
+}
