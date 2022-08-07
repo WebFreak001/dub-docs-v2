@@ -48,6 +48,7 @@ nav:
     - dub-guide/registry.md
     - dub-guide/publishing.md
     - dub-guide/plugins_dlls.md
+    - dub-guide/contributing.md
   - "DUB Reference":
     - dub-reference/build_settings.md
     - dub-reference/buildtypes.md
@@ -62,6 +63,7 @@ nav:
     - dub-reference/recipe.md
     - dub-reference/registries.md
     - dub-reference/settings.md
+    - dub-reference/suppliers.md
     - dub-reference/subpackages.md
     - dub-reference/target_types.md
   - "CLI Reference":

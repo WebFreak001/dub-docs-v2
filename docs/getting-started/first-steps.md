@@ -88,3 +88,7 @@ You can publish packages to [the registry here](../dub-guide/publishing.md).
 You can easily fetch and build third-party projects published to the dub registry via the [`dub fetch <package name>`](../cli-reference/dub-fetch.md) command.
 
 To get the package, run [`dub fetch <package name>`](../cli-reference/dub-fetch.md) to download the package and install it in your [user build directory](../dub-reference/dub_home.md). [`dub run <package name>`](../cli-reference/dub-run.md) can then be used to build and execute the package. Adding the `--cache=local` flag to the fetch command will extract the package into a subfolder of the current working directory.
+
+## Publishing packages
+
+To publish your own packages, just create a new package with a valid package recipe like above (see the [package recipe specification](../dub-reference/recipe.md)) and follow the instructions on the [publishing packages](../dub-guide/publishing.md) page.
