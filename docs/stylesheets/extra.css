@@ -83,7 +83,7 @@ body:not([data-md-color-scheme="slate"]) .md-search__input::placeholder {
     color: inherit;
 }
 
-/* embedde terminal outputs */
+/* embedded terminal outputs */
 
 .col_lg {
     color: #40af00;
@@ -107,6 +107,30 @@ body:not([data-md-color-scheme="slate"]) .md-search__input::placeholder {
 
 .col_db {
     color: #3e17e9;
+}
+
+[data-md-color-scheme="slate"] .col_lg {
+    color: #5df93c;
+}
+
+[data-md-color-scheme="slate"] .col_dg {
+    color: #00ca16;
+}
+
+[data-md-color-scheme="slate"] .col_lp {
+    color: #eb8aff;
+}
+
+[data-md-color-scheme="slate"] .col_dp {
+    color: #bc5aff;
+}
+
+[data-md-color-scheme="slate"] .col_lb {
+    color: #44daff;
+}
+
+[data-md-color-scheme="slate"] .col_db {
+    color: #5580ff;
 }
 
 :root {
