@@ -1,4 +1,6 @@
 :root {
+    --dub-fill-red: #B03931;
+
     --md-primary-fg-color: #B03931;
     --md-primary-fg-color--light: #B03931;
     --md-primary-fg-color--dark: #98312A;
@@ -8,6 +10,21 @@
     --md-default-fg-color--light: rgba(0, 0, 0, 0.8);
     --md-default-fg-color--lighter: rgba(0, 0, 0, 0.12);
     --md-default-fg-color--lightest: rgba(0, 0, 0, 0.07);
+}
+
+.md-header {
+    background-color: var(--dub-fill-red);
+}
+
+.md-tabs {
+    background-color: transparent;
+}
+
+[data-md-color-scheme="slate"] {
+    --md-primary-fg-color: #EA382C;
+    --md-primary-fg-color--light: #EA382C;
+    --md-primary-fg-color--dark: #B03931;
+    --md-accent-fg-color: #ff4633;
 }
 
 .md-header__button.md-logo {
