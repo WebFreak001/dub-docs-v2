@@ -55,6 +55,13 @@ want the standard DUB fill color for big areas)
     width: initial;
 }
 
+/* ridge style header border */
+
+.md-header .md-tabs {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -1px 0 #943029;
+}
+
 /* make menu links colored the same as hover */
 .md-nav__item .md-nav__link--active,
 .md-nav__item .md-nav__link:is(:focus, :hover) {
@@ -65,6 +72,16 @@ want the standard DUB fill color for big areas)
 
 .md-typeset dd {
     margin-top: 0;
+}
+
+/* prevent line breaks inside code blocks */
+
+code {
+    white-space: nowrap;
+}
+
+pre code {
+    white-space: pre;
 }
 
 /* make search input field white on light theme (instead of dark red) */
@@ -180,4 +197,54 @@ body:after {
     color: white;
     font-size: 14pt;
     opacity: 0.5;
+}
+
+/* install page OS icons */
+
+div.install {
+    padding-left: 70px;
+    min-height: 70px;
+    background-repeat: no-repeat;
+    background-position: 10px 40px;
+    background-size: 50px auto;
+
+    padding-bottom: 1.4em;
+}
+
+div.install h3 {
+    margin-top: 0;
+}
+
+div.install.os-arch {
+    background-image: url(../images/product/archlinux_logo.png);
+}
+
+div.install.os-gentoo {
+    background-image: url(../images/product/gentoo_logo.png);
+}
+
+div.install.os-homebrew {
+    background-image: url(../images/product/homebrew_logo.png);
+}
+
+div.install.os-nix {
+    background-image: url(../images/product/nix_logo.png);
+}
+
+div.install.os-ubuntu {
+    background-size: 36px auto;
+    background-image: url(../images/product/ubuntu_logo.png), url(../images/product/debian_logo.png);
+    background-position: 10px calc(50% - 24px), 10px calc(50% + 24px);
+}
+
+div.install.os-opensuse {
+    background-image: url(../images/product/opensuse_logo.png);
+}
+
+div.install.os-snap {
+    background-image: url(../images/product/snapcraft_logo.png);
+}
+
+div.install.os-openbsd {
+    background-image: url(../images/product/openbsd_logo.png);
 }

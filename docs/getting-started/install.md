@@ -52,11 +52,17 @@ gdc build.d && ./a.out
 
 These links are not maintained by the same people maintaining the official downloads. 
 
+<div markdown="1" class="install os-arch">
+
 ### [Arch Linux](https://wiki.archlinux.org/index.php/D_(programming_language))
 
 ```
-pacman -S dub
+pacman -S dlang
 ```
+
+</div>
+
+<div markdown="1" class="install os-gentoo">
 
 ### [Gentoo](https://wiki.gentoo.org/wiki/Dlang)
 
@@ -64,17 +70,29 @@ pacman -S dub
 layman -f -a dlang
 ```
 
+</div>
+
+<div markdown="1" class="install os-homebrew">
+
 ### [Homebrew](https://formulae.brew.sh/formula/dub)
 
 ```
 brew install dub
 ```
 
+</div>
+
+<div markdown="1" class="install os-nix">
+
 ### [Nix/NixOS](https://search.nixos.org/packages?show=dub&query=dub)
 
 ```
 nix-env -iA nixos.dub
 ```
+
+</div>
+
+<div markdown="1" class="install os-ubuntu">
 
 ### Ubuntu/Debian
 
@@ -84,11 +102,19 @@ Using the [APT repository](http://d-apt.sourceforge.net/) also used for the D co
 apt install dub
 ```
 
+</div>
+
+<div markdown="1" class="install os-opensuse">
+
 ### [OpenSUSE Tumbleweed](https://build.opensuse.org/package/show/devel:languages:D/dub)
 
 ```
 sudo zypper install dub
 ```
+
+</div>
+
+<div markdown="1" class="install os-snap">
 
 ### [Snap](https://snapcraft.io/dub)
 
@@ -96,8 +122,14 @@ sudo zypper install dub
 sudo snap install --classic dub
 ```
 
+</div>
+
+<div markdown="1" class="install os-openbsd">
+
 ### [OpenBSD](https://openports.se/devel/dub)
 
 ```
 doas pkg_add dub
 ```
+
+</div>
