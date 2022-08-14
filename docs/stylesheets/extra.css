@@ -1,4 +1,4 @@
-:root {
+:root, [data-md-color-scheme="default"] {
     --dub-fill-red: #B03931;
 
     --md-primary-fg-color: #B03931;
@@ -53,6 +53,12 @@ want the standard DUB fill color for big areas)
 .md-header__button.md-logo :is(img, svg) {
     height: 40px;
     width: initial;
+}
+
+/* make menu links colored the same as hover */
+.md-nav__item .md-nav__link--active,
+.md-nav__item .md-nav__link:is(:focus, :hover) {
+    color: var(--md-typeset-a-color);
 }
 
 /* embedded man pages definition list */
@@ -159,4 +165,19 @@ body:not([data-md-color-scheme="slate"]) .md-search__input::placeholder {
     background-color: #333333;
     -webkit-mask-image: var(--md-admonition-icon--cli);
     mask-image: var(--md-admonition-icon--cli);
+}
+
+body:after {
+    content: "THIS DOCUMENTATION IS STILL WORK IN PROGRESS, YOU MAY WANT TO LOOK AT https://dub.pm INSTEAD.";
+    display: block;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    border: 4px solid yellow;
+    background-color: black;
+    color: white;
+    font-size: 14pt;
+    opacity: 0.5;
 }
