@@ -131,7 +131,7 @@ Build settings influence the command line options passed to the compiler and lin
     | targetPath | `"<path>"` | The destination path of the output binary - this setting does not support the platform attribute |
     | workingDirectory | `"<path>"` | A fixed working directory from which the generated executable will be run - this setting does not support the platform attribute |
     | subConfigurations | `"<dependency>" "<configuration>"` | Locks a dependency (first argument) to a specific configuration (second argument); see also the [configurations section](#configurations) - this setting does not support the platform attribute |
-    | buildRequirements | `"<requirement1>" ["<requirement2>" [...]]` | List of required settings for the build process. See the [build settings page](../dub-reference/build_settings.md) for details. |
+    | buildRequirements | `"<requirement1>" ["<requirement2>" [...]]` | List of required settings for the build process. See the [build settings page](../dub-reference/build_settings.md#buildrequirements) for details. |
     | buildOptions | `"<option1>" ["<option2>" [...]]` | List of build option identifiers (corresponding to compiler flags) - see the [build settings page](../dub-reference/build_settings.md) for details. |
     | libs | `"<lib1>" ["<lib2>" [...]]` | A list of external library names - depending on the compiler, these will be converted to the proper linker flag (e.g. "ssl" might get translated to "-L-lssl"). On Posix platforms dub will try to find the correct linker flags by using [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/) |
     | sourceFiles | `"<pattern1>" ["<pattern2>" [...]]` | Additional files passed to the compiler - can be useful to add certain configuration dependent source files that are not contained in the general source folder |
@@ -188,6 +188,8 @@ Build settings influence the command line options passed to the compiler and lin
     | dflags | `string[]` | Additional flags passed to the D compiler - note that these flags are usually specific to the compiler in use, but a set of flags is automatically translated from DMD to the selected compiler |
     | lflags | `string[]` | Additional flags passed to the linker - note that these flags are usually specific to the linker in use |
     | injectSourceFiles | `string[]` | Source files that will be compiled into binaries that depend on this package. Warning: this should be under a permissive license (like Boost) or you risk infecting a users binary with an incompatible license. |
+
+Additionally it is possible to use environment variables inside of build setting values using dollar notation. Any variable not matching a predefined name will be taken from the program environment. To denote a literal dollar sign, use `$$`. Refer to [the specification](../dub-reference/environment_variables.md) for more details.
 
 ## Sub packages
 
@@ -292,12 +294,213 @@ See also: [Sub packages](../dub-reference/subpackages.md) in the DUB reference.
 
 ## Configurations
 
+Build configurations add or override build settings to the global ones. A build configuration can be selected through the `dub --config=<name>` command line switch for the package that is being built or through the `subConfigurations` property to choose a configuration for a dependency.
+
+For more information about which configuration is picked and what defaults are used, refer to [the specification](../dub-reference/configurations.md) linked below.
+
+The following example defines "metro-app" and "desktop-app" configurations that are only available on Windows and a "glut-app" configuration that is available on all platforms.
+
+=== "dub.sdl"
+
+    ```sdl
+    ...
+    name "somepackage"
+    configuration "metro-app" {
+        platforms "windows"
+        targetType "executable"
+        versions "MetroApp"
+        libs "d3d11"
+    }
+    configuration "desktop-app" {
+        platforms "windows"
+        targetType "executable"
+        versions "DesktopApp"
+        libs "d3d9"
+    }
+    configuration "glut-app" {
+        // works on any platform
+        targetType "executable"
+        versions "GlutApp"
+    }
+    ```
+
+    In addition to the usual [build settings](#build-settings), the following settings are recognized inside of a configuration block:
+
+    | Name | Arguments | Description |
+    |------|-----------|-------------|
+    | platforms | `"<spec1>" ["<spec2" [...]]` | A list of [platform specifiers](#platform-specific-settings) to limit on which platforms the configuration applies |
+
+=== "dub.json"
+
+    ```json
+    {
+        ...
+        "name": "somepackage",
+        "configurations": [
+            {
+                "name": "metro-app",
+                "targetType": "executable",
+                "platforms": ["windows"],
+                "versions": ["MetroApp"],
+                "libs": ["d3d11"]
+            },
+            {
+                "name": "desktop-app",
+                "targetType": "executable",
+                "platforms": ["windows"],
+                "versions": ["DesktopApp"],
+                "libs": ["d3d9"]
+            },
+            {
+                "name": "glut-app",
+                "targetType": "executable",
+                "versions": ["GlutApp"]
+            }
+        ]
+    }
+    ```
+
+    | Name | Type | Description |
+    |------|------|-------------|
+    | name [required] | `string` | Name of the configuration |
+    | platforms | `string[]` | A list of [platform suffixes](#platform-specific-settings) (as used for the build settings) to limit on which platforms the configuration applies |
+
 See also: [Configurations](../dub-reference/configurations.md)
 
 ## Build types
 
-See also: [Configurations](../dub-reference/configurations.md)
+By default, a set of predefined build types is already provided by DUB and can be specified using `dub --build=<name>`:
+
+=== "dub.sdl"
+
+    | Name | Build options |
+    | ---- | ------------- |
+    | plain | (none) |
+    | debug | `"debugMode" "debugInfo"` |
+    | release | `"releaseMode" "optimize" "inline"` |
+    | release-debug | `"releaseMode" "optimize" "inline" "debugInfo"` |
+    | release-nobounds | `"releaseMode" "optimize" "inline" "noBoundsCheck"` |
+    | unittest | `"unittests" "debugMode" "debugInfo"` |
+    | docs | `"syntaxOnly"` plus `dflags "-Dddocs"` |
+    | ddox | `"syntaxOnly"` plus `dflags "-Xfdocs.json" "-Df__dummy.html"` |
+    | profile | `"profile" "optimize" "inline" "debugInfo"` |
+    | profile-gc | `"profileGC" "debugInfo"` |
+    | cov | `"coverage" "debugInfo"` |
+    | cov-ctfe | `"coverageCTFE" "debugInfo"` |
+    | unittest-cov | `"unittests" "coverage" "debugMode" "debugInfo"` |
+    | unittest-cov-ctfe | `"unittests" "coverageCTFE" "debugMode" "debugInfo"` |
+    | syntax | `"syntaxOnly"` |
+
+    <!--
+    NOTE when adding new default build types to the docs:
+    the syntax in the SDL file has no commas and no brackets.
+    -->
+
+=== "dub.json"
+
+    | Name | Build options |
+    | ---- | ------------- |
+    | plain | `[]` |
+    | debug | `["debugMode", "debugInfo"]` |
+    | release | `["releaseMode", "optimize", "inline"]` |
+    | release-debug | `["releaseMode", "optimize", "inline", "debugInfo"]` |
+    | release-nobounds | `["releaseMode", "optimize", "inline", "noBoundsCheck"]` |
+    | unittest | `["unittests", "debugMode", "debugInfo"]` |
+    | docs | `["syntaxOnly"]` plus `"dflags": ["-Dddocs"]` |
+    | ddox | `["syntaxOnly"]` plus `"dflags": ["-Xfdocs.json", "-Df__dummy.html"]` |
+    | profile | `["profile", "optimize", "inline", "debugInfo"]` |
+    | profile-gc | `["profileGC", "debugInfo"]` |
+    | cov | `["coverage", "debugInfo"]` |
+    | cov-ctfe | `["coverageCTFE", "debugInfo"]` |
+    | unittest-cov | `["unittests", "coverage", "debugMode", "debugInfo"]` |
+    | unittest-cov-ctfe | `["unittests", "coverageCTFE", "debugMode", "debugInfo"]` |
+    | syntax | `["syntaxOnly"]` |
+
+For more information about the build settings refer to the [build settings specification](../dub-reference/build_settings.md).
+
+The existing build types can be customized and new build types can be added using the global `buildType` directive (SDL) or adding an entry in `"buildTypes"` (JSON). Any of the low level build settings (excluding dependencies, targetType, targetName, targetPath, workingDirectory, subConfigurations) can be used inside those. The build settings specified here will later be modified/augmented by the package/configuration specific settings.
+
+An example that overrides the "debug" build type and defines a new "debug-profile" type:
+
+=== "dub.sdl"
+
+    ```sdl
+    name "my-package"
+    buildType "debug" {
+        buildOptions "debugMode" "debugInfo" "optimize"
+    }
+    buildType "debug-profile" {
+        buildOptions "debugMode" "debugInfo" "profile"
+    }
+    ```
+
+=== "dub.json"
+
+    ```json
+    {
+        "name": "my-package",
+        "buildTypes": {
+            "debug": {
+                "buildOptions": ["debugMode", "debugInfo", "optimize"]
+            },
+            "debug-profile": {
+                "buildOptions": ["debugMode", "debugInfo", "profile"]
+            }
+        }
+    }
+    ```
+
+See also: [Build types](../dub-reference/buildtypes.md)
 
 ## Toolchain requirements
+
+The package can specify version requirements for the toolchain. Each requirement is specified with the [version dependency syntax](../dub-reference/dependencies.md). For compilers, the keyword `no` can be specified instead of a version requirement to disallow the use of a specific compiler for the package. The following requirements are allowed:
+
+| Identifier | Description |
+| ---------- | ----------- |
+| `"dub"`    | DUB version requirement |
+|`"frontend"`| D frontend version requirement (equivalent to DMD version, applies to all compilers) |
+| `"dmd"`    | DMD version requirement |
+| `"ldc"`    | LDC version requirement |
+| `"gdc"`    | GDC version requirement |
+
+=== "dub.sdl"
+
+    Example 1: package that needs at least dub v1.14 and uses D features introduced in frontend 2.068 (since DMD version 2.068) and other features that will be deprecated in frontend 2.087
+
+    ```sdl
+    toolchainRequirements dub=">=1.14.0" frontend=">=2.068 <2.087"
+    ```
+
+    Example 2: package that needs to be compiled with LDC from version 1.11
+
+    ```sdl
+    toolchainRequirements dmd="no" gdc="no" ldc=">=1.11.0"
+    ```
+
+=== "dub.json"
+
+    Example 1: package that needs at least dub v1.14 and uses D features introduced in frontend 2.068 (since DMD version 2.068) and other features that will be deprecated in frontend 2.087
+
+    ```json
+    {
+        "toolchainRequirements": {
+            "dub": ">=1.14.0",
+            "frontend": ">=2.068 <2.087"
+        }
+    }
+    ```
+
+    Example 2: package that needs to be compiled with LDC from version 1.11
+
+    ```json
+    {
+        "toolchainRequirements": {
+            "dmd": "no",
+            "gdc": "no",
+            "ldc": ">=1.11"
+        }
+    }
+    ```
 
 See also: [Recipes](../dub-reference/recipe.md) in DUB reference.
