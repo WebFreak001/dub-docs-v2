@@ -71,6 +71,7 @@ nav:
     - dub-reference/build_settings.md
     - dub-reference/buildtypes.md
     - dub-reference/configurations.md
+    - dub-reference/defaults.md
     - dub-reference/dub_home.md
     - dub-reference/dependencies.md
     - dub-reference/environment_variables.md

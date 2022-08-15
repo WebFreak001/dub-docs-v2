@@ -375,13 +375,13 @@ The following values are supported:
 | ----- | ----------- | -------------------------- | -------------------------- | -------------------------- |
 | `"debugMode"` | Compile in debug mode (enables contracts) | `-debug` | `-d-debug` | `-fdebug` |
 | `"releaseMode"` | Compile in release mode (disables assertions and bounds checks) | `-release` | `-release` | `-frelease` |
-| `"coverage"` | Enable code coverage analysis | `-cov` | `-cov` | `-fprofile-arcs -ftest-coverage` |
+| `"coverage"` | Enable code coverage analysis to be written when the app has finished running | `-cov` | `-cov` | `-fprofile-arcs -ftest-coverage` |
 | `"coverageCTFE"` | Enable code coverage analysis (including code executed at compile-time via CTFE) | `-cov=ctfe` | `-cov=ctfe` | n/a |
-| `"debugInfo"` | Enable symbolic debug information | `-g` | `-g` | `-g` |
+| `"debugInfo"` | Enable symbolic debug information (e.g. so that GDB can show function names, parameters and show linked source code) | `-g` | `-g` | `-g` |
 | `"debugInfoC"` | Enable symbolic debug information in C compatible form | `-g` | `-gc` | `-g` |
 | `"alwaysStackFrame"` | Always generate a stack frame | `-gs` | `-disable-fp-elim` | n/a |
 | `"stackStomping"` | Perform stack stomping | `-gx` | n/a | n/a |
-| `"inline"` | Perform function inlining | `-inline` | `-enable-inlining -Hkeep-all-bodies` | `-finline-functions` |
+| `"inline"` | Perform function inlining | `-inline` | `-enable-inlining` `-Hkeep-all-bodies` | `-finline-functions` |
 | `"noBoundsCheck"` | Disable all bounds checking | `-noboundscheck` | `-boundscheck=off` | `-fno-bounds-check` |
 | `"optimize"` | Enable optimizations | `-O` | `-O3` | `-O2` |
 | `"profile"` | Emit profiling code | `-profile` | `-fdmd-trace-functions` | `-pg` |

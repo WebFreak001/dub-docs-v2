@@ -66,7 +66,7 @@ set by dub in commands:
 
 ![dub environment variables hierarchy](../images/environment-variable-hierarchy.png)
 
-Environment variables are set by keys using the [defaultEnvironments](../dub-reference/settings.md#defaultEnvironments) and related settings in the [user settings](../dub-reference/settings.md). Additionally, with higher precedence, environments and related settings in the [package recipe](../dub-reference/recipe.md#environment-variables) are loaded.
+Environment variables are set by keys using the [defaultEnvironments](../dub-reference/settings.md#defaultenvironments) and related settings in the [user settings](../dub-reference/settings.md). Additionally, with higher precedence, environments and related settings in the [package recipe](../dub-reference/recipe.md#environment-variables) are loaded.
 
 For finding the default environment variables first the system environment variables are loaded, then overridden by the user settings environment variables. This goes through all the default settings first.
 

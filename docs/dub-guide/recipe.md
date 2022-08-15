@@ -450,7 +450,7 @@ An example that overrides the "debug" build type and defines a new "debug-profil
     }
     ```
 
-See also: [Build types](../dub-reference/buildtypes.md)
+See also: [Build types](../dub-reference/buildtypes.md) in the reference
 
 ## Toolchain requirements
 
