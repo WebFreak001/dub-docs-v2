@@ -360,6 +360,8 @@ The following example defines "metro-app" and "desktop-app" configurations that 
     }
     ```
 
+    In addition to the usual [build settings](#build-settings), the following settings are recognized inside of a configuration block:
+
     | Name | Type | Description |
     |------|------|-------------|
     | name [required] | `string` | Name of the configuration |
