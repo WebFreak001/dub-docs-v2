@@ -570,7 +570,7 @@ Supports [glob matching](http://dlang.org/phobos/std_path.html#.globMatch) patte
 
     ```json
     ...
-    "extraDependencyFiles": "libs/*"
+    "extraDependencyFiles": ["libs/*"]
     ```
 
     Type: `string[]`
