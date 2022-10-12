@@ -41,7 +41,9 @@ All [build settings](./build_settings.md) are allowed inside each build type blo
 
 ## Default Examples
 
-These are the default build type definitions (you can simply copy these into your [recipe](../dub-guide/recipe.md) file to override them):
+These are the default build type definitions. (you can simply copy these into your [recipe](../dub-guide/recipe.md) file to override them)
+
+The default build types usually only override [buildOptions](./build_settings.md#buildoptions) and [dflags](./build_settings.md#dflags), but all other build settings are supported here too.
 
 === "dub.sdl"
 
