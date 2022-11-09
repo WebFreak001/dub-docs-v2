@@ -38,7 +38,7 @@ Additionally it is possible to use environment variables inside of build setting
             "default": true
         },
         "remote": {
-            "repostiory": "git+https://example.org/remote.git",
+            "repository": "git+https://example.org/remote.git",
             "version": "a1b2c3d4"
         },
         "modified": {
