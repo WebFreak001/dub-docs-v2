@@ -1,6 +1,9 @@
 # Dependency syntax
 
 ## version
+
+See [version specifiers](./build_settings#version-specifiers).
+
 ### `"*"`
 ### `~>a.b.c`
 ### `~>a.b`
