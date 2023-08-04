@@ -5,9 +5,6 @@
 ### `~>a.b.c`
 ### `~>a.b`
 ### `>=a`, `>=a <b`, `<b`
-### `~gitbranch`
-
-(discouraged because of it not updating)
 
 ## version + optional
 ## version + optional + default=false
