@@ -4,10 +4,21 @@
 
 See [version specifiers](./build_settings#version-specifiers).
 
-### `"*"`
-### `~>a.b.c`
-### `~>a.b`
-### `>=a`, `>=a <b`, `<b`
+* `version=""*""`
+* `version="~>a.b.c"`
+* `version="~>a.b"`
+* `version=">=a"`
+* `version=">=a <b"`
+* `version="<b"`
+
+|                            | (no release) | v0.0.1 | v0.1.0 | v0.2.0 | v1.0.0 | v2.0.0 |
+|----------------------------|--------------|--------|--------|--------|--------|--------|
+| `version="*"`              | ✓            | ✓      | ✓      | ✓      | ✓      | ✓      |
+| `version="~>0.1.0"`        |              |        | ✓      |        |        |        |
+| `version="~>0.1"`          |              |        | ✓      | ✓      |        |        |
+| `version=">=0.1.0"`        |              |        | ✓      | ✓      | ✓      | ✓      |
+| `version=">=0.1.0 <1.0.0"` |              |        | ✓      | ✓      |        |        |
+| `version="<2.0.0"`         |              | ✓      | ✓      | ✓      | ✓      |        |
 
 ## `version` + `optional`
 ## `version` + `optional` + `default=false`
