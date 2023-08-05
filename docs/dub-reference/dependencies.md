@@ -1,6 +1,12 @@
-# Dependency syntax
+# Dependencies
 
-## `version`
+See also [build dependencies](./build_settings.md#dependencies).
+
+WIP - see <https://github.com/WebFreak001/dub-docs-v2/issues/12>.
+
+## Dependency syntax
+
+### `version`
 
 See [version specifiers](./build_settings#version-specifiers).
 
@@ -20,18 +26,19 @@ See [version specifiers](./build_settings#version-specifiers).
 | `version=">=0.1.0 <1.0.0"` |              |        | ✓      | ✓      |        |        |
 | `version="<2.0.0"`         |              | ✓      | ✓      | ✓      | ✓      |        |
 
-## `version` + `optional`
-## `version` + `optional` + `default=false`
-## `path`
+### `version` + `optional`
+### `version` + `optional` + `default=false`
+### `path`
 
 Note: this is best used in sub-packages, avoid going outside of repository bounds for public projects.
 
-## `repository`
-### Git repostiories
-## `dflags`
+### `repository`
+#### Git repositories
+
+### `dflags`
 ## `dub.selections.json`
 ## `dub add-path`
 ## `dub add-local`
-## dependency/version resolution
-## per-configuration dependencies
+## Dependency/version resolution
+## Per-configuration dependencies
 ## `Have_xyz`
