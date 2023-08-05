@@ -177,7 +177,7 @@ The following values are recognized for the `targetType` setting:
 | `"none"`       | Does not build anything and doesn't generate an output file. This is useful for packages that are supposed to drag in other packages or sub packages using "dependency" directives. |
 | `"executable"` | Generates an executable binary. (e.g. `.exe` on Windows) |
 | `"library"`    | Specifies that the package is to be used as a library, without limiting the actual type of library. This should be the default for most libraries. |
-| `"sourceLibrary"` | This target type does not generate a binary, but rather forces dub to add all source files directly to the same compiler invocation as the dependent project. |
+| `"sourceLibrary"` | This target type does not generate a binary, but rather forces dub to add all source files directly to the same compiler invocation as the dependent project. For details, see [Build Hooks](./hooks.md#targettype-sourcelibrary) |
 | `"staticLibrary"` | Forces output as a static library container. (e.g. `.lib` / `.a` file) |
 | `"dynamicLibrary"` | Forces output as a dynamic/shared library. (e.g. `.dll` / `.dylib` / `.so`) |
 
@@ -427,6 +427,8 @@ The following values are supported:
 A list of external library names - depending on the compiler, these will be converted to the proper linker flag (e.g. "ssl" might get translated to "-L-lssl").
 
 On Posix platforms dub will try to find the correct linker flags by first checking if they exist using `pkg-config --exists <lib>` and then inject their corresponding linker flags reported by pkg-config instead of the guessed compiler specific library argument.
+
+See also: [platform specifications](./platform_specifications.md)
 
 ## `sourceFiles`
 
@@ -965,9 +967,13 @@ Additional flags passed to the linker - note that these flags are usually specif
 
     Type: `string[]`
 
-Source files that will be compiled into binaries that depend on this package.
+Source files that will be compiled into binaries that depend on this package, no matter what targetType the package has.
 
-**Warning:** this should be under a permissive license (like Boost) or you risk infecting a users binary with an incompatible license.
+For details, see [Build Hooks](./hooks.md#injectsourcefiles)
+
+!!! warning
+
+    this should be under a permissive license (like Boost) or you risk infecting a users binary with an incompatible license.
 
 Supports [glob matching](http://dlang.org/phobos/std_path.html#.globMatch) patterns to match multiple files at once.
 

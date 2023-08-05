@@ -112,6 +112,10 @@ body:not([data-md-color-scheme="slate"]) .md-search__input::placeholder {
 
 /* embedded terminal outputs */
 
+.col_transparent {
+    opacity: 0.5;
+}
+
 .col_lg {
     color: #40af00;
 }

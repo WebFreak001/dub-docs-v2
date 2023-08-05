@@ -80,7 +80,6 @@ nav:
     - dub-reference/dependencies.md
     - dub-reference/environment_variables.md
     - dub-reference/hooks.md
-    - dub-reference/local_dependencies.md
     - dub-reference/output_target.md
     - dub-reference/platform_specifications.md
     - dub-reference/recipe.md

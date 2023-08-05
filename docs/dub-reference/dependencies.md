@@ -1,8 +1,16 @@
 # Dependencies
 
-See also [build dependencies](./build_settings.md#dependencies).
+!!! note "Work-in-Progress Documentation"
 
-WIP - see <https://github.com/WebFreak001/dub-docs-v2/issues/12>.
+    The content on this page is not yet fully finished.
+
+    Tracking issue: <https://github.com/WebFreak001/dub-docs-v2/issues/12>
+
+!!! tip "Recipe details"
+
+    This page details values for a DUB recipe setting.
+
+    For syntax, see [build settings](./build_settings.md#dependencies)
 
 ## Dependency syntax
 

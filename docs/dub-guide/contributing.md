@@ -16,6 +16,8 @@ The registry / website source code for DUB ([https://code.dlang.org](https://cod
 
 For the registry you will need to setup a MongoDB server and setup a GitHub auth token to put into the server config for API requests.
 
+For more information see [Registries](../dub-reference/registries.md).
+
 ## Contributing to this documentation
 
 The documentation pages you are reading right now are also available on GitHub:
