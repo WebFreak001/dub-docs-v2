@@ -8,7 +8,7 @@ WIP - see <https://github.com/WebFreak001/dub-docs-v2/issues/12>.
 
 ### `version`
 
-See [version specifiers](./build_settings#version-specifiers).
+See [version specifiers](./build_settings.md#version-specifiers).
 
 * `version="*"`
 * `version="==a.b.c"`
