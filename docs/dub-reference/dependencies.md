@@ -10,7 +10,7 @@ WIP - see <https://github.com/WebFreak001/dub-docs-v2/issues/12>.
 
 See [version specifiers](./build_settings#version-specifiers).
 
-* `version=""*""`
+* `version="*"`
 * `version="==a.b.c"`
 * `version="~>a.b.c"`
 * `version="~>a.b"`
