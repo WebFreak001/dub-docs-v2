@@ -1,6 +1,6 @@
 # Dependency syntax
 
-## version
+## `version`
 
 See [version specifiers](./build_settings#version-specifiers).
 
@@ -9,14 +9,15 @@ See [version specifiers](./build_settings#version-specifiers).
 ### `~>a.b`
 ### `>=a`, `>=a <b`, `<b`
 
-## version + optional
-## version + optional + default=false
-## path-based dependency
+## `version` + `optional`
+## `version` + `optional` + `default=false`
+## `path`
 
 Note: this is best used in sub-packages, avoid going outside of repository bounds for public projects.
 
-## git repository based
-## dflags
+## `repository`
+### Git repostiories
+## `dflags`
 ## `dub.selections.json`
 ## `dub add-path`
 ## `dub add-local`
