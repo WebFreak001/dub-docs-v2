@@ -10,7 +10,7 @@
 - `NO_COLOR`
 - `TEMP` (Windows only)
 - `DUB_NO_RESOLVE_LIMIT`
-- `DUB_REGISTRY`
+- [`DUB_REGISTRY`](./registries.md#dubregistry-environment-variable)
 - `DUBPATH`
 - `DC`
 - `PATH`

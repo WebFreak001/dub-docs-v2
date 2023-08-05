@@ -41,6 +41,18 @@ Search the given registry URL first when resolving dependencies. Can be specifie
 - DUB: URL to DUB registry (default)
 - Maven: URL to Maven repository + group id containing dub packages as artifacts. E.g. `mvn+http://localhost:8040/maven/libs-release/dubpackages`
 
+Example:
+
+```json title="settings.json"
+{
+    "registryUrls": [
+        "https://registry.example.org"
+    ]
+}
+```
+
+For more information about custom registries, see [Registries](./registries.md).
+
 ### `skipRegistry`
 
 **Type:** `string`
