@@ -1,10 +1,14 @@
 # dub-run(1)
 dub-run \- Builds and runs a package (default command)
+
 ## SYNOPSIS
-<b>dub run </b>[&lt;<i>package</i>&gt;[@&lt;<i>version-spec</i>&gt;]] <i>OPTIONS...</i>
-[-- <<i>application arguments...</i>>]
+**dub run** [<*package*>[@<[*version-spec*][1]>]] *OPTIONS...* [-- <*application arguments...*>]
+
+[1]: ../../dub-reference/build_settings#version-specifiers
+
 ## DESCRIPTION
 Builds and runs a package (uses the main package in the current working directory by default)
+
 ## OPTIONS
 
 <dl>
