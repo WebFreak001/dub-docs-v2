@@ -100,6 +100,8 @@ This setting does not support platform specifications.
         - Since DUB v1.24.0, build settings fields (as described in this document) can also be applied to dependencies through the `"dependencies": {}` attributes.<br/>
           Note that as of v1.24.0 only `dflags` is supported.
 
+#### Version specifiers
+
 Version specifiers define a range of acceptable versions. They can be specified in any of the following ways:
 
 * Restrict to a certain minor version: `"~>2.2.13"`, equivalent to `">=2.2.13 <2.3.0"`
