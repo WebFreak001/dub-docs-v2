@@ -51,4 +51,13 @@ Note: this is best used in sub-packages, avoid going outside of repository bound
 ## `dub add-local`
 ## Dependency/version resolution
 ## Per-configuration dependencies
+
 ## `Have_xyz`
+
+!!! note "Work-in-Progress Documentation"
+
+    The content on this section is not yet fully finished.
+
+    Tracking issue: <https://github.com/WebFreak001/dub-docs-v2/issues/2>
+
+Upstream documentation: <https://dub.pm/advanced_usage>

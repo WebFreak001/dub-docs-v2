@@ -1,5 +1,11 @@
 # dub.json / dub.sdl recipes
 
+!!! note "Work-in-Progress Documentation"
+
+    This page currently contains almost all metadata keys and could be interpreted as specification. This page is only intended to give a basic overview, so a lot of content here will be moved into the DUB Reference pages in the future.
+
+    [Future home](../dub-reference/recipe.md)
+
 For the detailed recipe specification, check out [Recipes](../dub-reference/recipe.md) in the DUB reference.
 
 Every DUB package _should_ contain a recipe (`dub.sdl` or `dub.json`) file in its root folder. This file contains meta-information about the project and its dependencies. This information is used for building the project and for deploying it using the registry. The following sections give an overview of the recognized settings and their meaning. Unknown settings will emit a warning whenever building or otherwise using DUB.
@@ -453,56 +459,3 @@ An example that overrides the "debug" build type and defines a new "debug-profil
     ```
 
 See also: [Build types](../dub-reference/buildtypes.md) in the reference
-
-## Toolchain requirements
-
-The package can specify version requirements for the toolchain. Each requirement is specified with the [version dependency syntax](../dub-reference/dependencies.md). For compilers, the keyword `no` can be specified instead of a version requirement to disallow the use of a specific compiler for the package. The following requirements are allowed:
-
-| Identifier | Description |
-| ---------- | ----------- |
-| `"dub"`    | DUB version requirement |
-|`"frontend"`| D frontend version requirement (equivalent to DMD version, applies to all compilers) |
-| `"dmd"`    | DMD version requirement |
-| `"ldc"`    | LDC version requirement |
-| `"gdc"`    | GDC version requirement |
-
-=== "dub.sdl"
-
-    Example 1: package that needs at least dub v1.14 and uses D features introduced in frontend 2.068 (since DMD version 2.068) and other features that will be deprecated in frontend 2.087
-
-    ```sdl
-    toolchainRequirements dub=">=1.14.0" frontend=">=2.068 <2.087"
-    ```
-
-    Example 2: package that needs to be compiled with LDC from version 1.11
-
-    ```sdl
-    toolchainRequirements dmd="no" gdc="no" ldc=">=1.11.0"
-    ```
-
-=== "dub.json"
-
-    Example 1: package that needs at least dub v1.14 and uses D features introduced in frontend 2.068 (since DMD version 2.068) and other features that will be deprecated in frontend 2.087
-
-    ```json
-    {
-        "toolchainRequirements": {
-            "dub": ">=1.14.0",
-            "frontend": ">=2.068 <2.087"
-        }
-    }
-    ```
-
-    Example 2: package that needs to be compiled with LDC from version 1.11
-
-    ```json
-    {
-        "toolchainRequirements": {
-            "dmd": "no",
-            "gdc": "no",
-            "ldc": ">=1.11"
-        }
-    }
-    ```
-
-See also: [Recipes](../dub-reference/recipe.md) in DUB reference.

@@ -72,6 +72,7 @@ nav:
     - dub-guide/plugins_dlls.md
     - dub-guide/contributing.md
   - "DUB Reference":
+    - dub-reference/recipe.md
     - dub-reference/build_settings.md
     - dub-reference/buildtypes.md
     - dub-reference/configurations.md
@@ -82,7 +83,6 @@ nav:
     - dub-reference/hooks.md
     - dub-reference/output_target.md
     - dub-reference/platform_specifications.md
-    - dub-reference/recipe.md
     - dub-reference/registries.md
     - dub-reference/settings.md
     - dub-reference/suppliers.md
