@@ -50,40 +50,14 @@ Please keep the description concise (not more than 100 characters) and avoid inc
 !!! hint "Just an excerpt"
     These are just the boiled down documentation of the available fields, refer to the [recipe](../dub-reference/recipe.md) page in the DUB reference for details to any given field.
 
-## Global settings
+## Package settings
 
-=== "dub.sdl"
+Package settings (top-level settings) such as name, description, homepage,
+authors, copyright, etc. can be defined to configure e.g. default
+[`targetName`](../dub-reference/build_settings.md#targetname).
 
-    | Name | Arguments | Description |
-    |------|-----------|------------|
-    | name [required] | `"<name>"` | Name of the package, used to uniquely identify the package. Must be comprised of only lower case ASCII alpha-numeric characters, "-" or "_". |
-    | description [required for publishing] | `"<text>"` | Brief description of the package |
-    | toolchainRequirements | `<requirement1> [<requirement2> [...]]` | Set of version requirements for DUB, for compilers and for language frontend. See the [toolchain requirements section](#toolchain-requirements). |
-    | homepage | `"<url>"` | URL of the project website |
-    | authors | `"<author1>" ["<author2>" [...]]` | List of project authors (the suggested format is either `"Peter Parker"` or `"Peter Parker <pparker@example.com>"`) |
-    | copyright | `"<text>"` | Copyright declaration string |
-    | license [required for publishing] | `"<license spec>"` | License(s) under which the project can be used - see the [license specification](../dub-reference/recipe.md#license) for possible values |
-    | subPackage | `"<path>" or { ... }` | Defines a sub-package using either a path to a sub directory, or in-place - see the [sub package section](#sub-packages) for more information |
-    | configuration | `"<name>" { ... }` | Speficies a build configuration (chosen on the command line using `--config=...`) - see the [configurations section](#configurations) for more details |
-    | buildType | `"<name>" { ... }` | Defines an additional custom build type or overrides one of the default ones (chosen on the command line using --build=...) - see the [build types section](#build-types) for an example |
-    | x:ddoxFilterArgs | `"<arg1>" ["<arg2>" [...]]` | Specifies a list of command line flags usable for controlling filter behavior for --build=ddox **[experimental]** |
-
-=== "dub.json"
-
-    | Name | Type | Description |
-    |------|------|-------------|
-    | name [required] | `string` | Name of the package, used to uniquely identify the package. Must be comprised of only lower case ASCII alpha-numeric characters, "-" or "_". |
-    | description [required for publishing] | `string` | Brief description of the package |
-    | toolchainRequirements | `string[string]` | Set of version requirements for DUB, for compilers and for language frontend. See the [toolchain requirements section](#toolchain-requirements). |
-    | homepage | `string` | URL of the project website |
-    | authors | `string[]` | List of project authors (the suggested format is either `"Peter Parker"` or `"Peter Parker <pparker@example.com>"`) |
-    | copyright | `string` | Copyright declaration string |
-    | license [required for publishing] | `string` | License(s) under which the project can be used - see the [license specification](../dub-reference/recipe.md#license) for possible values |
-    | subPackages | `T[]` | Defines an array of sub-packages defined in the same directory as the root project, where each entry is either a path of a sub folder or an object of the same format as a dub.json file - see the [sub package section](#sub-packages) for more information |
-    | configurations | `T[]` | Speficies an optional list of build configurations (chosen on the command line using `--config=...`) - see the [configurations section](#configurations) for more details |
-    | buildTypes | `T[string]` | Defines additional custom build types or overrides the default ones (chosen on the command line using --build=...) - see the [build types section](#build-types) for an example |
-    | x:ddoxFilterArgs | `string[]` | Specifies a list of command line flags usable for controlling filter behavior for --build=ddox **[experimental]** |
-
+See the [package settings reference](../dub-reference/package_settings.md) to
+view all available top-level settings.
 
 ## Platform specific settings
 

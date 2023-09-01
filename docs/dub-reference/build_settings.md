@@ -205,6 +205,8 @@ For more information about the target types, refer to the [specification](./targ
 
 Sets the base name of the output file; type and platform specific pre- and suffixes are added automatically.
 
+Defaults to the [package `name`](./package_settings.md).
+
 This setting does not support platform specifications.
 
 Examples:

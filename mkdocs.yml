@@ -74,6 +74,7 @@ nav:
     - dub-guide/contributing.md
   - "DUB Reference":
     - dub-reference/recipe.md
+    - dub-reference/package_settings.md
     - dub-reference/build_settings.md
     - dub-reference/buildtypes.md
     - dub-reference/configurations.md
