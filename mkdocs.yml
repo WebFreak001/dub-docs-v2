@@ -9,8 +9,6 @@ theme:
     text: "Roboto Slab"
   logo: /images/dub-header.png
   favicon: /favicon.ico
-  extra:
-    homepage: https://code.dlang.org
   features:
     - search.suggest
     - search.share
@@ -33,6 +31,9 @@ theme:
     toggle:
       icon: material/brightness-4
       name: Switch to light mode
+
+extra:
+  homepage: https://code.dlang.org
 
 plugins:
   - search
